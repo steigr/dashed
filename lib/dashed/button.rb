@@ -33,7 +33,7 @@ module Dashed
       return @capture if @capture
 
       @capture = PCAPRUB::Pcap.open_live(@interface, SNAPLENGTH, true, 0)
-      @capture.setfilter("arp")
+      @capture.setfilter("ether host #{@mac_address}")
     end
 
     def duplicate_arp?
